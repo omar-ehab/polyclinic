@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use App\Enums\GenderEnum;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -10,7 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Patient extends Model
 {
-    use SoftDeletes, HasUlids;
+    use SoftDeletes, HasUlids, HasFactory;
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
     protected $fillable = [
@@ -24,6 +26,7 @@ class Patient extends Model
 
     protected $casts = [
         'birth_date' => 'date',
+        'gender' => GenderEnum::class
     ];
 
     public function appointments(): HasMany

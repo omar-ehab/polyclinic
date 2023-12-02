@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('governorates', function (Blueprint $table) {
             $table->ulid('id')->primary();
-            $table->string('name', 15)->unique();
+            $table->string('name_en', 15)->unique();
+            $table->string('name_ar', 15)->unique();
             $table->timestamps();
             $table->softDeletes();
         });

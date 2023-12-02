@@ -12,7 +12,7 @@ class Governorate extends Model
     use SoftDeletes, HasUlids;
     protected $guarded = ['id'];
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name_en', 'name_ar'];
 
 
     public function regions(): HasMany

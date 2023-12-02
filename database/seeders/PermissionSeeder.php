@@ -2,10 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Permission;
+use App\Models\Role;
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
 
 class PermissionSeeder extends Seeder
 {
@@ -14,23 +13,17 @@ class PermissionSeeder extends Seeder
      */
     public function run(): void
     {
-        $adminRole = Role::create(['name' => 'admin']);
+        Role::create(['name' => 'admin']);
         $managerRole = Role::create(['name' => 'manager']);
         $doctorRole = Role::create(['name' => 'doctor']);
         $receptionistRole = Role::create(['name' => 'receptionist']);
 
 
         # governorates CRUD
-        $governoratesCreatePermission = Permission::create(['name' => 'create governorates']);
         $governoratesReadPermission = Permission::create(['name' => 'read governorates']);
-        $governoratesUpdatePermission = Permission::create(['name' => 'update governorates']);
-        $governoratesDeletePermission = Permission::create(['name' => 'delete governorates']);
 
         # regions CRUD
-        $regionsCreatePermission = Permission::create(['name' => 'create regions']);
         $regionsReadPermission = Permission::create(['name' => 'read regions']);
-        $regionsUpdatePermission = Permission::create(['name' => 'update regions']);
-        $regionsDeletePermission = Permission::create(['name' => 'delete regions']);
 
         # clinics CRUD
         $clinicsCreatePermission = Permission::create(['name' => 'create clinics']);
@@ -86,8 +79,6 @@ class PermissionSeeder extends Seeder
         $patientUpdateSurgeriesPermission = Permission::create(['name' => 'update patient surgeries']);
         $patientDeleteSurgeriesPermission = Permission::create(['name' => 'delete patient surgeries']);
 
-
-        $adminRole->syncPermissions(Permission::all());
 
         $managerRole->syncPermissions([
             $clinicsCreatePermission,

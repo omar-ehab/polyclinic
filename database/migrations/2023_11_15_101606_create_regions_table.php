@@ -14,11 +14,14 @@ return new class extends Migration
         Schema::create('regions', function (Blueprint $table) {
             $table->ulid('id')->primary();
             $table->foreignUlid('governorate_id')->index();
-            $table->string('name', 50);
+            $table->string('name_en', 50);
+            $table->string('name_ar', 50);
             $table->timestamps();
             $table->softDeletes();
 
             $table->foreign('governorate_id')->references('id')->on('governorates')->cascadeOnDelete();
+            $table->unique(['governorate_id', 'name_en']);
+            $table->unique(['governorate_id', 'name_ar']);
         });
     }
 

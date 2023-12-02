@@ -12,7 +12,7 @@ class Region extends Model
     use SoftDeletes, HasUlids;
     protected $guarded = ['id'];
 
-    protected $fillable = ['governorate_id', 'name'];
+    protected $fillable = ['governorate_id', 'name_en', 'name_ar'];
 
     public function governorate(): BelongsTo
     {
