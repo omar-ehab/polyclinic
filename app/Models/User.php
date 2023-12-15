@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Enums\GenderEnum;
-use App\Enums\UserThemeEnum;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -26,8 +25,7 @@ class User extends Authenticatable
         'email',
         'password',
         'gender',
-        'avatar_url',
-        'theme'
+        'avatar_url'
     ];
 
     /**
@@ -44,8 +42,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
-        'gender' => GenderEnum::class,
-        'theme' => UserThemeEnum::class,
+        'gender' => GenderEnum::class
     ];
 
 

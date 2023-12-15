@@ -20,8 +20,7 @@ class ProfileResource extends JsonResource
             'email' => $this->email,
             'role' => $this->getRoleNames()->first(),
             'gender' => $this->gender,
-            'avatar_url' => $this->avatar_url,
-            'theme' => $this->theme,
+            'avatar_url' => $this->avatar_url
         ];
 
         if ($request->user()->hasRole('doctor')) {
