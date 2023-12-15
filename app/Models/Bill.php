@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Bill extends Model
@@ -27,4 +28,14 @@ class Bill extends Model
         'due_date' => 'immutable_date',
         'amount' => 'integer'
     ];
+
+    public function patient(): BelongsTo
+    {
+        return $this->belongsTo(Patient::class);
+    }
+
+    public function appointment(): BelongsTo
+    {
+        return $this->belongsTo(Appointment::class);
+    }
 }
